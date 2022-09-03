@@ -1,0 +1,17 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  EasyChefAPI:
+    image: EasyChefAPI
+    build:
+      context: .
+      dockerfile: EasyChefAPI/Dockerfile
+      target: development
+    ports:
+      - 3000:3000
+      - 3001:3001
+    environment:
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
