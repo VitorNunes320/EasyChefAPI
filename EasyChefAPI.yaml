@@ -1,0 +1,348 @@
+openapi: 3.0.1
+info:
+  title: EasyChef API
+  version: v1
+paths:
+  /api/Autenticacao/Registrar:
+    post:
+      tags:
+        - Autenticacao
+      summary: Utilizado para criar novos usuários
+      requestBody:
+        description: Dados do usuário
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CriarUsuarioModel'
+      responses:
+        '200':
+          description: Registro realizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '400':
+          description: E-mail já utilizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '404':
+          description: Perfil de usuário acesso inválido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '500':
+          description: Erro interno no servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+  /api/Autenticacao/Login:
+    post:
+      tags:
+        - Autenticacao
+      summary: Utilizado para realizar login no sistema
+      requestBody:
+        description: Dados utilizados no login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginModel'
+      responses:
+        '200':
+          description: Login realizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '400':
+          description: Email ou senha inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '500':
+          description: Erro interno no servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+  /api/Autenticacao/Perfis:
+    get:
+      tags:
+        - Autenticacao
+      summary: Busca todos os perfis disponíveis no sistema
+      responses:
+        '200':
+          description: Retorna uma lista perfis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerfilResponseListResponseDadosBase'
+        '400':
+          description: Email ou senha inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '500':
+          description: Erro interno no servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+  '/api/Autenticacao/EsqueciSenha/{email}':
+    get:
+      tags:
+        - Autenticacao
+      summary: Envia um email com o link de recuperação de senha
+      parameters:
+        - name: email
+          in: path
+          description: E-mail do usuário
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Senha recuperada com sucesso
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '400':
+          description: E-mail inválido
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '500':
+          description: Erro interno no servidor
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+  /api/Autenticacao/RedefinirSenha:
+    post:
+      tags:
+        - Autenticacao
+      summary: Troca a senha do usuário
+      requestBody:
+        description: Token e a nova senha do usuário
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedefinirSenhaModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RedefinirSenhaModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RedefinirSenhaModel'
+      responses:
+        '200':
+          description: Senha redefinida com sucesso
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '400':
+          description: Token inválido
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '404':
+          description: Token não existe
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResponseBase'
+        '500':
+          description: Erro interno no servidor
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/StringResponseDadosBase'
+components:
+  schemas:
+    CriarUsuarioModel:
+      required:
+        - email
+        - nome
+        - perfis
+        - senha
+      type: object
+      properties:
+        nome:
+          minLength: 1
+          type: string
+          description: Nome do usuário
+        email:
+          minLength: 1
+          type: string
+          description: Email utilizado para realizar o login
+        senha:
+          minLength: 1
+          type: string
+          description: Senha utilizada para realizar o login
+        perfis:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+      description: Dados de criação do usuário
+    LoginModel:
+      required:
+        - email
+        - senha
+      type: object
+      properties:
+        email:
+          minLength: 1
+          type: string
+          description: Email utilizado para realizar o login
+        senha:
+          minLength: 1
+          type: string
+          description: Senha utilizada para realizar o login
+      additionalProperties: false
+      description: Dados do login do usuário
+    PerfilResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Código de identificação do perfil
+          format: uuid
+        descricao:
+          type: string
+          description: Descrição do perfil
+          nullable: true
+      additionalProperties: false
+      description: Dados do perfil do usuário
+    PerfilResponseListResponseDadosBase:
+      required:
+        - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        mensagem:
+          type: string
+          description: Mensagem da requisição
+          nullable: true
+        dados:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerfilResponse'
+          description: Dados da requisição
+          nullable: true
+      additionalProperties: false
+      description: Classe padrão de resposta da API
+    RedefinirSenhaModel:
+      required:
+        - novaSenha
+        - token
+      type: object
+      properties:
+        token:
+          minLength: 1
+          type: string
+          description: Token de redefinição de senha
+        novaSenha:
+          minLength: 1
+          type: string
+          description: Nova senha do usuário
+      additionalProperties: false
+      description: Dados da redefinição de senha do usuário
+    ResponseBase:
+      required:
+        - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        mensagem:
+          type: string
+          description: Mensagem da requisição
+          nullable: true
+      additionalProperties: false
+      description: Classe padrão de resposta da API
+    ResponseStatus:
+      enum:
+        - 0
+        - 1
+        - -1
+      type: integer
+      format: int32
+    StringResponseDadosBase:
+      required:
+        - status
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        mensagem:
+          type: string
+          description: Mensagem da requisição
+          nullable: true
+        dados:
+          type: string
+          description: Dados da requisição
+          nullable: true
+      additionalProperties: false
+      description: Classe padrão de resposta da API
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: "JWT Authorization header usando Bearer.\r\n\r\n Insira 'Bearer' e, em seguida, seu token na entrada de texto abaixo.\r\n\r\nExemplo: \"Bearer 12345abcdef"
+      name: Authorization
+      in: header
+security:
+  - Bearer: [ ]
