@@ -1,7 +1,10 @@
 openapi: 3.0.1
+servers: 
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/VitorNunes320/EasyChefAPI/1.0.0-oas3
 info:
   title: EasyChef API
-  version: v1
+  version: 1.0.0-oas3
 paths:
   /api/Autenticacao/Registrar:
     post:
@@ -93,7 +96,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StringResponseDadosBase'
-  '/api/Autenticacao/EsqueciSenha/{email}':
+  /api/Autenticacao/EsqueciSenha/{email}:
     get:
       tags:
         - Autenticacao
@@ -345,4 +348,4 @@ components:
       name: Authorization
       in: header
 security:
-  - Bearer: [ ]
+  - Bearer: []
