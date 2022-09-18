@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
+    /// <summary>
+    /// Dados do perfil do usuário
+    /// </summary>
     public class PerfilResponse
     {
         public PerfilResponse(Guid id, string descricao)

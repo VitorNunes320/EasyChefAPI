@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyChefAPI", "EasyChefAPI\EasyChefAPI.csproj", "{BA21D158-7FDC-4A6E-B94C-347FBBECA921}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE47B670-82B2-4E30-A70E-E949D32915E9} = {EE47B670-82B2-4E30-A70E-E949D32915E9}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{2B332AE0-BC21-4E30-8E83-58909EAE595D}"
 EndProject
@@ -17,13 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infrastructure", "5 - I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{4081FE2B-BFC4-4BC7-A005-999751F209B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{EE47B670-82B2-4E30-A70E-E949D32915E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{EE47B670-82B2-4E30-A70E-E949D32915E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{7EFB7E8F-4839-4ECD-BD73-E6BDD74DC236}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{7EFB7E8F-4839-4ECD-BD73-E6BDD74DC236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Infrastructure\Data\Data.csproj", "{B7CFBC75-F8F0-4776-8D12-537FE029561F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Infrastructure\Data\Data.csproj", "{B7CFBC75-F8F0-4776-8D12-537FE029561F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossCutting", "Infrastructure\CrossCutting\CrossCutting.csproj", "{4A7A83AB-2E87-475F-B3BD-1B02DD4C24C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossCutting", "Infrastructure\CrossCutting\CrossCutting.csproj", "{4A7A83AB-2E87-475F-B3BD-1B02DD4C24C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{30DC26DD-2350-4361-B9DA-5189324C9773}"
 EndProject

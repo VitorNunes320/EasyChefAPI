@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
+    /// <summary>
+    /// Classe padrão de resposta da API
+    /// </summary>
+    /// <typeparam name="T">Tipo dos dados</typeparam>
     public class ResponseDadosBase<T> : ResponseBase
     {
         public ResponseDadosBase() { }
@@ -18,6 +22,9 @@ namespace Domain.Models
             Dados = dados;
         }
 
+        /// <summary>
+        /// Dados da requisição
+        /// </summary>
         public T Dados { get; set; }
     }
 }

@@ -27,6 +27,7 @@ ContextBindings.Configure(builder.Services);
 RepositoryBindings.Configure(builder.Services);
 ServiceBindings.Configure(builder.Services);
 
+builder.Services.AddMvc();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
@@ -55,9 +56,8 @@ builder.Services.AddSwaggerGen(c => {
         }
     });
 
-    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
+    c.IncludeXmlComments(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "EasyChefAPI.xml"));
+    c.IncludeXmlComments(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Domain.xml"));
 });
 
 var app = builder.Build();
@@ -66,7 +66,7 @@ app.UseHealthChecks("/");
 // Configure the HTTP request pipeline.
 app.UseDeveloperExceptionPage();
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.yaml", "EasyChef API"); });
 
 app.UseCors(x => x
     .AllowAnyOrigin()
