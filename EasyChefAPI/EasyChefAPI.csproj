@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.ECS" Version="3.7.5.78" />
+    <PackageReference Include="AWSSDK.ECS" Version="3.7.5.79" />
     <PackageReference Include="Graceterm" Version="1.0.7" />
     <PackageReference Include="MPOSAirApplicationLifetimeHandler" Version="3.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
