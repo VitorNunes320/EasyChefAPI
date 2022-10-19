@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Domain.Models;
+using Domain.Models.Autenticacao;
 
 namespace Service.Interfaces
 {

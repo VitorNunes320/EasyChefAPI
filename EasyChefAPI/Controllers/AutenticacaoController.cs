@@ -1,7 +1,7 @@
 ﻿using CrossCutting.Utils;
 using Domain.Enums;
 using Domain.Exceptions;
-using Domain.Models;
+using Domain.Models.Autenticacao;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
 using System.Net.Mime;
@@ -40,28 +40,28 @@ namespace EasyChefAPI.Controllers
         [HttpPost("Registrar")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ResponseDadosBase<string>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseBase<string>), StatusCodes.Status500InternalServerError)]
         public IActionResult RegistrarUsuario([FromBody] CriarUsuarioModel criarUsuarioModel)
         {
             try
             {
                 _usuarioService.CriarUsuario(criarUsuarioModel);
-                return Ok(new ResponseBase(ResponseStatus.Sucesso, Mensagens.SucessoRegistrarUsuario));
+                return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoRegistrarUsuario));
             }
             catch (PerfilNaoExisteException e)
             {
-                return NotFound(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return NotFound(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (EmailUtilizadoException e)
             {
-                return BadRequest(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDadosBase<string>(ResponseStatus.Erro, Mensagens.ErroRegistrarUsuario, e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroRegistrarUsuario, e.Message));
             }
         }
 
@@ -75,23 +75,23 @@ namespace EasyChefAPI.Controllers
         [HttpPost("Login")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ResponseDadosBase<string>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseBase<string>), StatusCodes.Status500InternalServerError)]
         public IActionResult Login(LoginModel loginModel)
         {
             try
             {
                 var response = _usuarioService.Login(loginModel);
-                return Ok(new ResponseDadosBase<TokenUsuarioResponse>(ResponseStatus.Sucesso, Mensagens.SucessoLogin, response));
+                return Ok(new ResponseBase<TokenUsuarioResponse>(ResponseStatus.Sucesso, Mensagens.SucessoLogin, response));
             }
             catch (EmailSenhaInvalidoException e)
             {
-                return BadRequest(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDadosBase<string>(ResponseStatus.Erro, Mensagens.ErroLogin, e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroLogin, e.Message));
             }
         }
 
@@ -106,22 +106,22 @@ namespace EasyChefAPI.Controllers
         [HttpGet("Perfis")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(ResponseDadosBase<List<PerfilResponse>>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ResponseDadosBase<string>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseBase<List<PerfilResponse>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseBase<string>), StatusCodes.Status500InternalServerError)]
         public IActionResult GetPerfis()
         {
             try
             {
                 var response = _perfilService.GetPerfis();
                 if (response.Count > 0)
-                    return Ok(new ResponseDadosBase<List<PerfilResponse>>(ResponseStatus.Sucesso, Mensagens.Ok, response));
+                    return Ok(new ResponseBase<List<PerfilResponse>>(ResponseStatus.Sucesso, Mensagens.Ok, response));
                 else
-                    return NotFound(new ResponseBase(ResponseStatus.Falha, Mensagens.ErroNenhumPerfilEncontrado));
+                    return NotFound(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.ErroNenhumPerfilEncontrado));
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDadosBase<string>(ResponseStatus.Erro, Mensagens.ErroBuscarPerfis, e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroBuscarPerfis, e.Message));
             }
         }
 
@@ -133,26 +133,26 @@ namespace EasyChefAPI.Controllers
         /// <response code="400">E-mail inválido</response>
         /// <response code="500">Erro interno no servidor</response>
         [HttpGet("EsqueciSenha/{email}")]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ResponseDadosBase<string>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseBase<string>), StatusCodes.Status500InternalServerError)]
         public IActionResult EsqueciSenha(string email)
         {
             try
             {
                 var sucesso = _usuarioService.EsqueciSenha(email);
                 if (sucesso)
-                    return Ok(new ResponseBase(ResponseStatus.Sucesso, Mensagens.SucessoEsqueciSenha));
+                    return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoEsqueciSenha));
                 else
-                    return BadRequest(new ResponseBase(ResponseStatus.Falha, Mensagens.FalhaEsqueciSenha));
+                    return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.FalhaEsqueciSenha));
             }
             catch (EmailNaoCadastradoException e)
             {
-                return BadRequest(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDadosBase<string>(ResponseStatus.Erro, Mensagens.FalhaEsqueciSenha, e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.FalhaEsqueciSenha, e.Message));
             }
         }
 
@@ -165,35 +165,35 @@ namespace EasyChefAPI.Controllers
         /// <response code="404">Token não existe</response>
         /// <response code="500">Erro interno no servidor</response>
         [HttpPost("RedefinirSenha")]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ResponseBase), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ResponseDadosBase<string>), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseBase<string>), StatusCodes.Status500InternalServerError)]
         public IActionResult RedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
         {
             try
             {
                 var sucesso = _usuarioService.RedefinirSenha(redefinirSenhaModel);
                 if (sucesso)
-                    return Ok(new ResponseBase(ResponseStatus.Sucesso, Mensagens.SucessoRedefinirSenha));
+                    return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoRedefinirSenha));
                 else
-                    return BadRequest(new ResponseBase(ResponseStatus.Falha, Mensagens.FalhaEsqueciSenha));
+                    return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.FalhaEsqueciSenha));
             }
             catch (TokenNaoExisteException e)
             {
-                return NotFound(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return NotFound(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (TokenUtilizadoException e)
             {
-                return BadRequest(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (TokenExpirouException e)
             {
-                return BadRequest(new ResponseBase(ResponseStatus.Falha, e.Message));
+                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseDadosBase<string>(ResponseStatus.Erro, Mensagens.FalhaEsqueciSenha, e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.FalhaEsqueciSenha, e.Message));
             }
         }
     }

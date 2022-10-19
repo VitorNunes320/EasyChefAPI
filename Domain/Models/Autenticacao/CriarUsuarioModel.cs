@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace Domain.Models.Autenticacao
 {
     /// <summary>
     /// Dados de criação do usuário

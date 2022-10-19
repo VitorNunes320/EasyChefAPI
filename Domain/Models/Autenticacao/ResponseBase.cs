@@ -1,12 +1,13 @@
 ﻿using Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace Domain.Models.Autenticacao
 {
     /// <summary>
     /// Classe padrão de resposta da API
     /// </summary>
-    public class ResponseBase
+    /// <typeparam name="T">Tipo dos dados</typeparam>
+    public class ResponseBase<T>
     {
         public ResponseBase() { }
 
@@ -14,6 +15,13 @@ namespace Domain.Models
         {
             Status = status;
             Mensagem = mensagem;
+        }
+
+        public ResponseBase(ResponseStatus status, string mensagem, T dados)
+        {
+            Status = status;
+            Mensagem = mensagem;
+            Dados = dados;
         }
 
         /// <summary>
@@ -26,5 +34,10 @@ namespace Domain.Models
         /// Mensagem da requisição
         /// </summary>
         public string Mensagem { get; set; }
+
+        /// <summary>
+        /// Dados da requisição
+        /// </summary>
+        public T? Dados { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Domain.Models.Autenticacao;
 using Repository.Interfaces;
 using Service.Interfaces;
 

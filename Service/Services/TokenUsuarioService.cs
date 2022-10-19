@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Exceptions;
 using Domain.Helpers;
-using Domain.Models;
+using Domain.Models.Autenticacao;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Repository.Interfaces;
@@ -89,7 +89,7 @@ namespace Service.Services
 
         public TokenUsuario? ValidarTokenUsuario(string token)
         {
-            ResponseBase response = new ResponseBase();
+            ResponseBase<object> response = new ResponseBase<object>();
 
             var tokenExiste = _tokenUsuarioRepository.GetByToken(token);
 

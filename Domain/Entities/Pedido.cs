@@ -44,5 +44,7 @@ namespace Domain.Entities
         public Guid PedidoEntregaId { get; set; }
 
         public PedidoEntrega PedidoEntrega { get; set; }
+
+        public List<ProdutoPedido> ProdutosPedidos { get; set; }
     }
 }

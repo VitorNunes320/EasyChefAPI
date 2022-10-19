@@ -12,6 +12,7 @@ namespace Repository.Bindings
             services.AddTransient<IPerfilRepository, PerfilRepository>();
             services.AddTransient<IPerfilUsuarioRepository, PerfilUsuarioRepository>();
             services.AddTransient<ITokenUsuarioRepository, TokenUsuarioRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
         }
     }
 }

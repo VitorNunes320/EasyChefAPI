@@ -1,22 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace Domain.Models.Autenticacao
 {
     /// <summary>
-    /// Tokens de acesso
+    /// Dados da redefinição de senha do usuário
     /// </summary>
-    public class TokenResponse
+    public class RedefinirSenhaModel
     {
         /// <summary>
-        /// Access Token
+        /// Token de redefinição de senha
         /// </summary>
         [Required]
         public string Token { get; set; }
 
         /// <summary>
-        /// Refresh Token'
+        /// Nova senha do usuário
         /// </summary>
         [Required]
-        public string RefreshToken { get; set; }
+        public string NovaSenha { get; set; }
     }
 }

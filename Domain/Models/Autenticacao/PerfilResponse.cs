@@ -1,4 +1,4 @@
-﻿namespace Domain.Models
+﻿namespace Domain.Models.Autenticacao
 {
     /// <summary>
     /// Dados do perfil do usuário
