@@ -12,6 +12,10 @@ namespace Data.Contexts
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<PerfilUsuario> PerfisUsuarios { get; set; }
         public DbSet<TokenUsuario> TokensUsuarios { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Mesa> Mesas { get; set; }
+        public DbSet<Empresa> Empresas { get; set; }
+        public DbSet<PedidoEntrega> PedidosEntregas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 

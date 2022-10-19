@@ -24,7 +24,7 @@ namespace Service.Services
         {
             _tokenUsuarioRepository = tokenUsuarioRepository;
             _appSettings = appSettings.Value;
-            _perfilUsuarioRepository = perfilUsuarioRepository;            
+            _perfilUsuarioRepository = perfilUsuarioRepository;
         }
 
         public TokenResponse GerarToken(Usuario usuario)
@@ -60,7 +60,7 @@ namespace Service.Services
 
         public TokenUsuario GerarTokenUsuario(Guid usuarioId, int dias, int? tamanho = null)
         {
-            string token; 
+            string token;
             do
             {
                 token = tamanho != null ? RandomString((int)tamanho) : (RandomString(35) + Guid.NewGuid());

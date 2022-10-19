@@ -5,11 +5,6 @@ using Domain.Exceptions;
 using Domain.Models;
 using Repository.Interfaces;
 using Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Services
 {
@@ -47,7 +42,7 @@ namespace Service.Services
             };
 
             usuario.PerfisUsuarios = new List<PerfilUsuario>();
-            foreach(Guid perfilId in usuarioModel.Perfis)
+            foreach (Guid perfilId in usuarioModel.Perfis)
             {
                 var perfilExiste = _perfilRepository.GetById(perfilId);
                 if (perfilExiste == null)
@@ -91,11 +86,11 @@ namespace Service.Services
             }
 
             var token = _tokenUsuarioService.GerarTokenUsuario(usuarioExiste.Id, 1, 6);
-            var mensagem = $"Seu código de recuperação de senha é { token.Token }";
+            var mensagem = $"Seu código de recuperação de senha é {token.Token}";
             return _emailService.SendEmail(email, "Esqueceu a senha", mensagem);
         }
 
-        public  bool RedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
+        public bool RedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
         {
             var tokenValido = _tokenUsuarioService.ValidarTokenUsuario(redefinirSenhaModel.Token);
             if (tokenValido != null)

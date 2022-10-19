@@ -1,15 +1,6 @@
-﻿using CrossCutting.Security;
-using Domain.Entities;
-using Domain.Exceptions;
-using Domain.Models;
+﻿using Domain.Models;
 using Repository.Interfaces;
-using Repository.Repositories;
 using Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Services
 {

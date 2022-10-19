@@ -1,10 +1,5 @@
 ﻿using Domain.Enums;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -12,9 +7,9 @@ namespace Domain.Entities
     public class Perfil : EntidadeBase
     {
         [Column("tipo_perfil")]
-		public TipoPerfil TipoPerfil { get; set; }
+        public TipoPerfil TipoPerfil { get; set; }
 
         [Column("descricao")]
-		public string Descricao { get; set; }
-	}
+        public string Descricao { get; set; }
+    }
 }

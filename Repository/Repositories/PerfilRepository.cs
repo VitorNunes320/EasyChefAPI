@@ -1,14 +1,8 @@
-﻿using Domain.Entities;
-using Data.Contexts;
-using Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using Microsoft.EntityFrameworkCore;
+﻿using Data.Contexts;
+using Domain.Entities;
 using Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Repository.Interfaces;
 
 namespace Repository.Repositories
 {

@@ -28,7 +28,8 @@ RepositoryBindings.Configure(builder.Services);
 ServiceBindings.Configure(builder.Services);
 
 builder.Services.AddMvc();
-builder.Services.AddSwaggerGen(c => {
+builder.Services.AddSwaggerGen(c =>
+{
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "EasyChef API",

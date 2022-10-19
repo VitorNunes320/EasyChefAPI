@@ -1,11 +1,9 @@
-﻿using Domain.Entities;
+﻿using CrossCutting.Utils;
 using Domain.Enums;
+using Domain.Exceptions;
 using Domain.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
-using CrossCutting.Utils;
-using Domain.Exceptions;
 using System.Net.Mime;
 
 namespace EasyChefAPI.Controllers
