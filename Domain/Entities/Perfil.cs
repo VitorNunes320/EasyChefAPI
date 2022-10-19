@@ -1,25 +1,20 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Perfil
+    [Table("perfis")]
+    public class Perfil : EntidadeBase
     {
-		public Guid Id { get; set; }
+        [Column("tipo_perfil")]
+		public TipoPerfil TipoPerfil { get; set; }
 
-		public int TipoPerfil { get; set; }
-
+        [Column("descricao")]
 		public string Descricao { get; set; }
-
-		public DateTime? CriadoEm { get; set; }
-
-		public DateTime? AtualizadoEm { get; set; }
-
-		public string? UsuarioCriou { get; set; }
-
-		public string? UsuarioAtualizou { get; set; }
 	}
 }

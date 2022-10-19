@@ -19,7 +19,7 @@ builder.Services.AddSwaggerGen();
 
 var mySqlConnection = builder.Configuration.GetSection("AppSettings")["ConnectionString"];
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(mySqlConnection, ServerVersion.AutoDetect(mySqlConnection)));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(mySqlConnection));
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 

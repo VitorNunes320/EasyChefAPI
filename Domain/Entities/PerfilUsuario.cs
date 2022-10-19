@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
+    [Table("perfis_usuarios")]
     public class PerfilUsuario
     {
         public PerfilUsuario(Guid usuarioId, Guid perfilId, string usuarioCriou)
@@ -19,20 +20,26 @@ namespace Domain.Entities
             CriadoEm = DataUtils.GetDateTimeBrasil();
         }
 
-		public Guid UsuarioId { get; set; }
+        [Column("usuario_id")]
+        public Guid UsuarioId { get; set; }
 
         public Usuario Usuario { get; set; }
 
+        [Column("perfil_id")]
         public Guid PerfilId { get; set; }
 
         public Perfil Perfil { get; set; }
 
+        [Column("criado_em")]
         public DateTime CriadoEm { get; set; }
 
-		public DateTime? AtualizadoEm { get; set; }
+        [Column("atualizado_em")]
+        public DateTime? AtualizadoEm { get; set; }
 
-		public string? UsuarioCriou { get; set; }
+        [Column("usuario_criou")]
+        public string? UsuarioCriou { get; set; }
 
-		public string? UsuarioAtualizou { get; set; }
+        [Column("usuario_atualizou")]
+        public string? UsuarioAtualizou { get; set; }
 	}
 }
