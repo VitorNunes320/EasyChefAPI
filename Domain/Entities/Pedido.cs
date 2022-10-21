@@ -3,7 +3,7 @@
 namespace Domain.Entities
 {
     [Table("pedido")]
-    public class Pedido
+    public class Pedido : EntidadeBase
     {
         public Pedido() : base() { }
 

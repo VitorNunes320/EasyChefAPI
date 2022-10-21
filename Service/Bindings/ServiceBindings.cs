@@ -12,6 +12,7 @@ namespace Service.Bindings
             services.AddTransient<ITokenUsuarioService, TokenUsuarioService>();
             services.AddTransient<IPerfilService, PerfilService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IPedidoService, PedidoService>();
         }
     }
 }

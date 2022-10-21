@@ -3,8 +3,10 @@
 namespace Domain.Entities
 {
     [Table("produtos_pedidos")]
-    public class ProdutoPedido
+    public class ProdutoPedido : EntidadeBase
     {
+        public ProdutoPedido() : base() { }
+
         [Column("receita_id")]
         public Guid ReceitaId { get; set; }
 
