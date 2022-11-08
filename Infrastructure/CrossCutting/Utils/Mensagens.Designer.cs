@@ -61,11 +61,20 @@ namespace CrossCutting.Utils {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar certificados!.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar os ingredientes!.
         /// </summary>
-        public static string ErroBuscarCertificados {
+        public static string ErroBuscarIngredientes {
             get {
-                return ResourceManager.GetString("ErroBuscarCertificados", resourceCulture);
+                return ResourceManager.GetString("ErroBuscarIngredientes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar as mesas!.
+        /// </summary>
+        public static string ErroBuscarMesas {
+            get {
+                return ResourceManager.GetString("ErroBuscarMesas", resourceCulture);
             }
         }
         
@@ -75,6 +84,69 @@ namespace CrossCutting.Utils {
         public static string ErroBuscarPerfis {
             get {
                 return ResourceManager.GetString("ErroBuscarPerfis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar as receitas!.
+        /// </summary>
+        public static string ErroBuscarReceitas {
+            get {
+                return ResourceManager.GetString("ErroBuscarReceitas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar unidade de medida!.
+        /// </summary>
+        public static string ErroBuscarUnidadeMedida {
+            get {
+                return ResourceManager.GetString("ErroBuscarUnidadeMedida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível criar o ingrediente!.
+        /// </summary>
+        public static string ErroCriarIngrediente {
+            get {
+                return ResourceManager.GetString("ErroCriarIngrediente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível criar a receita!.
+        /// </summary>
+        public static string ErroCriarReceita {
+            get {
+                return ResourceManager.GetString("ErroCriarReceita", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível atualizar o ingrediente!.
+        /// </summary>
+        public static string ErroEditarIngrediente {
+            get {
+                return ResourceManager.GetString("ErroEditarIngrediente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível atualizar a receita!.
+        /// </summary>
+        public static string ErroEditarReceita {
+            get {
+                return ResourceManager.GetString("ErroEditarReceita", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível atualizar a unidade de medida!.
+        /// </summary>
+        public static string ErroEditarUnidadeMedida {
+            get {
+                return ResourceManager.GetString("ErroEditarUnidadeMedida", resourceCulture);
             }
         }
         
@@ -102,6 +174,15 @@ namespace CrossCutting.Utils {
         public static string ErroEmailUtilizado {
             get {
                 return ResourceManager.GetString("ErroEmailUtilizado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível salvar o arquivo!.
+        /// </summary>
+        public static string ErroEnviarArquivoS3 {
+            get {
+                return ResourceManager.GetString("ErroEnviarArquivoS3", resourceCulture);
             }
         }
         
@@ -151,11 +232,38 @@ namespace CrossCutting.Utils {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum certificado foi encontrado!.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhuma receita foi encontrada!.
         /// </summary>
-        public static string FalhaNenhumCertificadoEncontrado {
+        public static string FalhaNenhumaReceitaEncontrado {
             get {
-                return ResourceManager.GetString("FalhaNenhumCertificadoEncontrado", resourceCulture);
+                return ResourceManager.GetString("FalhaNenhumaReceitaEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum ingrediente foi encontrado!.
+        /// </summary>
+        public static string FalhaNenhumIngredienteEncontrado {
+            get {
+                return ResourceManager.GetString("FalhaNenhumIngredienteEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhuma mesa foi encontrada!.
+        /// </summary>
+        public static string FalhaNenhumMesaEncontrado {
+            get {
+                return ResourceManager.GetString("FalhaNenhumMesaEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhuma unidade de medida foi encontrada!.
+        /// </summary>
+        public static string FalhaNenhumUnidadeMedidaEncontrada {
+            get {
+                return ResourceManager.GetString("FalhaNenhumUnidadeMedidaEncontrada", resourceCulture);
             }
         }
         
@@ -187,11 +295,74 @@ namespace CrossCutting.Utils {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Este usuário não tem acesso a empresa!.
+        /// </summary>
+        public static string FalhaUsuarioAcessoEmpresa {
+            get {
+                return ResourceManager.GetString("FalhaUsuarioAcessoEmpresa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Ok.
         /// </summary>
         public static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ingrediente criado com sucesso!.
+        /// </summary>
+        public static string SucessoCriarIngrediente {
+            get {
+                return ResourceManager.GetString("SucessoCriarIngrediente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Receita criada com sucesso!.
+        /// </summary>
+        public static string SucessoCriarReceita {
+            get {
+                return ResourceManager.GetString("SucessoCriarReceita", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unidade de medida criada com sucesso!.
+        /// </summary>
+        public static string SucessoCriarUnidadeMedida {
+            get {
+                return ResourceManager.GetString("SucessoCriarUnidadeMedida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ingrediente atualizado com sucesso!.
+        /// </summary>
+        public static string SucessoEditarIngrediente {
+            get {
+                return ResourceManager.GetString("SucessoEditarIngrediente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Receita atualizada com sucesso!.
+        /// </summary>
+        public static string SucessoEditarReceita {
+            get {
+                return ResourceManager.GetString("SucessoEditarReceita", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Unidade de medida atualizada com sucesso!.
+        /// </summary>
+        public static string SucessoEditarUnidadeMedida {
+            get {
+                return ResourceManager.GetString("SucessoEditarUnidadeMedida", resourceCulture);
             }
         }
         

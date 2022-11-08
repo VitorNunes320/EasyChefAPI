@@ -10,10 +10,7 @@ namespace Domain.Entities
         [Column("nome")]
         public string Nome { get; set; }
 
-        [Column("usuario_id")]
-        public Guid UsuarioId { get; set; }
-
-        public Usuario Usuario { get; set; }
+        public List<Usuario> Usuarios { get; set; }
 
         [Column("habilitado")]
         public bool Habilitado { get; set; }

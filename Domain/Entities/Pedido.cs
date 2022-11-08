@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Domain.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -20,7 +21,7 @@ namespace Domain.Entities
         public string Observacoes { get; set; }
 
         [Column("status")]
-        public int Status { get; set; }
+        public StatusPedido Status { get; set; }
 
         [Column("vendedor_id")]
         public Guid VendedorId { get; set; }
@@ -33,7 +34,7 @@ namespace Domain.Entities
         public Empresa Empresa { get; set; }
 
         [Column("tipo_pedido")]
-        public int TipoPedido { get; set; }
+        public TipoPedido TipoPedido { get; set; }
 
         [Column("mesa_id")]
         public Guid MesaId { get; set; }

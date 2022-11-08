@@ -1,10 +1,10 @@
-﻿using CrossCutting.Utils;
+﻿using System.Net.Mime;
+using CrossCutting.Utils;
 using Domain.Enums;
 using Domain.Exceptions;
 using Domain.Models.Autenticacao;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interfaces;
-using System.Net.Mime;
 
 namespace EasyChefAPI.Controllers
 {
@@ -32,7 +32,7 @@ namespace EasyChefAPI.Controllers
         /// <summary>
         /// Utilizado para criar novos usuários
         /// </summary>
-        /// <param name="criarUsuarioModel">Dados do usuário</param>
+        /// <param name="NovoUsuarioModel">Dados do usuário</param>
         /// <response code="200">Registro realizado com sucesso</response>
         /// <response code="400">E-mail já utilizado</response>
         /// <response code="404">Perfil de usuário acesso inválido</response>
@@ -44,25 +44,12 @@ namespace EasyChefAPI.Controllers
         [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ResponseBase<object>), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ResponseBase<string>), StatusCodes.Status500InternalServerError)]
-        public IActionResult RegistrarUsuario([FromBody] CriarUsuarioModel criarUsuarioModel)
+        public IActionResult RegistrarUsuario([FromBody] NovoUsuarioModel NovoUsuarioModel)
         {
-            try
-            {
-                _usuarioService.CriarUsuario(criarUsuarioModel);
+
+                _usuarioService.CriarUsuario(NovoUsuarioModel);
                 return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoRegistrarUsuario));
-            }
-            catch (PerfilNaoExisteException e)
-            {
-                return NotFound(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
-            }
-            catch (EmailUtilizadoException e)
-            {
-                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, e.Message));
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroRegistrarUsuario, e.Message));
-            }
+
         }
 
         /// <summary>

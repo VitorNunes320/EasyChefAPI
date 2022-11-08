@@ -13,6 +13,10 @@ namespace Service.Bindings
             services.AddTransient<IPerfilService, PerfilService>();
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IPedidoService, PedidoService>();
+            services.AddTransient<IUnidadeMedidaService, UnidadeMedidaService>();
+            services.AddTransient<IIngredienteService, IngredienteService>();
+            services.AddTransient<IReceitaService, ReceitaService>();
+            services.AddTransient<IMesaService, MesaService>();
         }
     }
 }

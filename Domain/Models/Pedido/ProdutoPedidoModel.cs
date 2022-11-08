@@ -8,6 +8,8 @@ namespace Domain.Models.Pedido
 
         public string Nome { get; set; }
 
+        public string NomeCliente { get; set; }
+
         public decimal Valor { get; set; }
 
         public decimal Quantidade { get; set; }

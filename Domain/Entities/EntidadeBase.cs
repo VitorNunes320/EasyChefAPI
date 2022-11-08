@@ -8,6 +8,7 @@ namespace Domain.Entities
         public EntidadeBase()
         {
             Id = Guid.NewGuid();
+            CriadoEm = DateTime.UtcNow;
         }
 
         [Key]

@@ -13,6 +13,11 @@ namespace Repository.Bindings
             services.AddTransient<IPerfilUsuarioRepository, PerfilUsuarioRepository>();
             services.AddTransient<ITokenUsuarioRepository, TokenUsuarioRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddTransient<IUnidadeMedidaRepository, UnidadeMedidaRepository>();
+            services.AddTransient<IIngredienteRepository, IngredienteRepository>();
+            services.AddTransient<IReceitaRepository, ReceitaRepository>();
+            services.AddTransient<IReceitaIngredienteRepository, ReceitaIngredienteRepository>();
+            services.AddTransient<IMesaRepository, MesaRepository>();
         }
     }
 }

@@ -1,10 +1,13 @@
 using Data;
 using Data.Contexts;
 using Domain.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository.Bindings;
 using Service.Bindings;
+using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +29,25 @@ builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Emai
 ContextBindings.Configure(builder.Services);
 RepositoryBindings.Configure(builder.Services);
 ServiceBindings.Configure(builder.Services);
+
+var key = Encoding.ASCII.GetBytes(builder.Configuration.GetSection("AppSettings")["JWTSecret"]);
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 builder.Services.AddMvc();
 builder.Services.AddSwaggerGen(c =>

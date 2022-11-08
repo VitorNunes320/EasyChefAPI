@@ -16,6 +16,10 @@ namespace Data.Contexts
         public DbSet<Mesa> Mesas { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<PedidoEntrega> PedidosEntregas { get; set; }
+        public DbSet<Ingrediente> Ingredientes { get; set; }
+        public DbSet<UnidadeMedida> UnidadesMedidas { get; set; }
+        public DbSet<Receita> Receitas { get; set; }
+        public DbSet<ReceitaIngrediente> ReceitasIngredientes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
 

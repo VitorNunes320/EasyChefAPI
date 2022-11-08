@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ErroBuscarCertificados" xml:space="preserve">
-    <value>Não foi possível buscar certificados!</value>
+  <data name="ErroBuscarIngredientes" xml:space="preserve">
+    <value>Não foi possível buscar os ingredientes!</value>
+  </data>
+  <data name="ErroBuscarMesas" xml:space="preserve">
+    <value>Não foi possível buscar as mesas!</value>
   </data>
   <data name="ErroBuscarPerfis" xml:space="preserve">
     <value>Não foi possível buscar os perfis!</value>
+  </data>
+  <data name="ErroBuscarReceitas" xml:space="preserve">
+    <value>Não foi possível buscar as receitas!</value>
+  </data>
+  <data name="ErroBuscarUnidadeMedida" xml:space="preserve">
+    <value>Não foi possível buscar unidade de medida!</value>
+  </data>
+  <data name="ErroCriarIngrediente" xml:space="preserve">
+    <value>Não foi possível criar o ingrediente!</value>
+  </data>
+  <data name="ErroCriarReceita" xml:space="preserve">
+    <value>Não foi possível criar a receita!</value>
+  </data>
+  <data name="ErroEditarIngrediente" xml:space="preserve">
+    <value>Não foi possível atualizar o ingrediente!</value>
+  </data>
+  <data name="ErroEditarReceita" xml:space="preserve">
+    <value>Não foi possível atualizar a receita!</value>
+  </data>
+  <data name="ErroEditarUnidadeMedida" xml:space="preserve">
+    <value>Não foi possível atualizar a unidade de medida!</value>
   </data>
   <data name="ErroEmailNaoCadastrado" xml:space="preserve">
     <value>Este endereço de e-mail não está sendo utilizado!</value>
@@ -131,6 +155,9 @@
   </data>
   <data name="ErroEmailUtilizado" xml:space="preserve">
     <value>Este endereço de e-mail já está sendo utilizado!</value>
+  </data>
+  <data name="ErroEnviarArquivoS3" xml:space="preserve">
+    <value>Não foi possível salvar o arquivo!</value>
   </data>
   <data name="ErroLogin" xml:space="preserve">
     <value>Não foi possível realizar o login!</value>
@@ -147,8 +174,17 @@
   <data name="FalhaEsqueciSenha" xml:space="preserve">
     <value>Não foi possível redefinir sua senha!</value>
   </data>
-  <data name="FalhaNenhumCertificadoEncontrado" xml:space="preserve">
-    <value>Nenhum certificado foi encontrado!</value>
+  <data name="FalhaNenhumaReceitaEncontrado" xml:space="preserve">
+    <value>Nenhuma receita foi encontrada!</value>
+  </data>
+  <data name="FalhaNenhumIngredienteEncontrado" xml:space="preserve">
+    <value>Nenhum ingrediente foi encontrado!</value>
+  </data>
+  <data name="FalhaNenhumMesaEncontrado" xml:space="preserve">
+    <value>Nenhuma mesa foi encontrada!</value>
+  </data>
+  <data name="FalhaNenhumUnidadeMedidaEncontrada" xml:space="preserve">
+    <value>Nenhuma unidade de medida foi encontrada!</value>
   </data>
   <data name="FalhaTokenExpirou" xml:space="preserve">
     <value>O token informado expirou!</value>
@@ -159,8 +195,29 @@
   <data name="FalhaTokenUtilizado" xml:space="preserve">
     <value>O token informado já foi utilizado!</value>
   </data>
+  <data name="FalhaUsuarioAcessoEmpresa" xml:space="preserve">
+    <value>Este usuário não tem acesso a empresa!</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="SucessoCriarIngrediente" xml:space="preserve">
+    <value>Ingrediente criado com sucesso!</value>
+  </data>
+  <data name="SucessoCriarReceita" xml:space="preserve">
+    <value>Receita criada com sucesso!</value>
+  </data>
+  <data name="SucessoCriarUnidadeMedida" xml:space="preserve">
+    <value>Unidade de medida criada com sucesso!</value>
+  </data>
+  <data name="SucessoEditarIngrediente" xml:space="preserve">
+    <value>Ingrediente atualizado com sucesso!</value>
+  </data>
+  <data name="SucessoEditarReceita" xml:space="preserve">
+    <value>Receita atualizada com sucesso!</value>
+  </data>
+  <data name="SucessoEditarUnidadeMedida" xml:space="preserve">
+    <value>Unidade de medida atualizada com sucesso!</value>
   </data>
   <data name="SucessoEsqueciSenha" xml:space="preserve">
     <value>Foi enviado um link para redefinir sua senha no e-mail informado!</value>

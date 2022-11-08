@@ -1,5 +1,5 @@
 openapi: 3.0.1
-servers: 
+servers:
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/VitorNunes320/EasyChefAPI/1.0.0-oas3
 info:
@@ -16,32 +16,32 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CriarUsuarioModel'
+              $ref: "#/components/schemas/NovoUsuarioModel"
       responses:
-        '200':
+        "200":
           description: Registro realizado com sucesso
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '400':
+                $ref: "#/components/schemas/ResponseBase"
+        "400":
           description: E-mail já utilizado
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '404':
+                $ref: "#/components/schemas/ResponseBase"
+        "404":
           description: Perfil de usuário acesso inválido
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '500':
+                $ref: "#/components/schemas/ResponseBase"
+        "500":
           description: Erro interno no servidor
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
   /api/Autenticacao/Login:
     post:
       tags:
@@ -52,50 +52,50 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LoginModel'
+              $ref: "#/components/schemas/LoginModel"
       responses:
-        '200':
+        "200":
           description: Login realizado com sucesso
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '400':
+                $ref: "#/components/schemas/ResponseBase"
+        "400":
           description: Email ou senha inválidos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '500':
+                $ref: "#/components/schemas/ResponseBase"
+        "500":
           description: Erro interno no servidor
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
   /api/Autenticacao/Perfis:
     get:
       tags:
         - Autenticacao
       summary: Busca todos os perfis disponíveis no sistema
       responses:
-        '200':
+        "200":
           description: Retorna uma lista perfis
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PerfilResponseListResponseDadosBase'
-        '400':
+                $ref: "#/components/schemas/PerfilResponseListResponseDadosBase"
+        "400":
           description: Email ou senha inválidos
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '500':
+                $ref: "#/components/schemas/ResponseBase"
+        "500":
           description: Erro interno no servidor
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
   /api/Autenticacao/EsqueciSenha/{email}:
     get:
       tags:
@@ -109,42 +109,42 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Senha recuperada com sucesso
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '400':
+                $ref: "#/components/schemas/ResponseBase"
+        "400":
           description: E-mail inválido
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '500':
+                $ref: "#/components/schemas/ResponseBase"
+        "500":
           description: Erro interno no servidor
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
   /api/Autenticacao/RedefinirSenha:
     post:
       tags:
@@ -155,65 +155,65 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RedefinirSenhaModel'
+              $ref: "#/components/schemas/RedefinirSenhaModel"
           text/json:
             schema:
-              $ref: '#/components/schemas/RedefinirSenhaModel'
+              $ref: "#/components/schemas/RedefinirSenhaModel"
           application/*+json:
             schema:
-              $ref: '#/components/schemas/RedefinirSenhaModel'
+              $ref: "#/components/schemas/RedefinirSenhaModel"
       responses:
-        '200':
+        "200":
           description: Senha redefinida com sucesso
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '400':
+                $ref: "#/components/schemas/ResponseBase"
+        "400":
           description: Token inválido
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '404':
+                $ref: "#/components/schemas/ResponseBase"
+        "404":
           description: Token não existe
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
+                $ref: "#/components/schemas/ResponseBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/ResponseBase'
-        '500':
+                $ref: "#/components/schemas/ResponseBase"
+        "500":
           description: Erro interno no servidor
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
             application/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
             text/json:
               schema:
-                $ref: '#/components/schemas/StringResponseDadosBase'
+                $ref: "#/components/schemas/StringResponseDadosBase"
 components:
   schemas:
-    CriarUsuarioModel:
+    NovoUsuarioModel:
       required:
         - email
         - nome
@@ -275,7 +275,7 @@ components:
       type: object
       properties:
         status:
-          $ref: '#/components/schemas/ResponseStatus'
+          $ref: "#/components/schemas/ResponseStatus"
         mensagem:
           type: string
           description: Mensagem da requisição
@@ -283,7 +283,7 @@ components:
         dados:
           type: array
           items:
-            $ref: '#/components/schemas/PerfilResponse'
+            $ref: "#/components/schemas/PerfilResponse"
           description: Dados da requisição
           nullable: true
       additionalProperties: false
@@ -310,7 +310,7 @@ components:
       type: object
       properties:
         status:
-          $ref: '#/components/schemas/ResponseStatus'
+          $ref: "#/components/schemas/ResponseStatus"
         mensagem:
           type: string
           description: Mensagem da requisição
@@ -330,7 +330,7 @@ components:
       type: object
       properties:
         status:
-          $ref: '#/components/schemas/ResponseStatus'
+          $ref: "#/components/schemas/ResponseStatus"
         mensagem:
           type: string
           description: Mensagem da requisição

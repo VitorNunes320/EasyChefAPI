@@ -5,9 +5,9 @@ namespace Domain.Models.Autenticacao
     /// <summary>
     /// Dados de criação do usuário
     /// </summary>
-    public class CriarUsuarioModel
+    public class NovoUsuarioModel
     {
-        public CriarUsuarioModel(string nome, string email, string senha, List<Guid> perfis)
+        public NovoUsuarioModel(string nome, string email, string senha, List<Guid> perfis)
         {
             Nome = nome;
             Email = email;
@@ -37,5 +37,10 @@ namespace Domain.Models.Autenticacao
         /// Perfis do usuário
         [Required]
         public List<Guid> Perfis { get; set; }
+
+        /// <summary>
+        /// Empresa do usuário
+        /// </summary>
+        public EmpresaModel Empresa { get; set; }
     }
 }

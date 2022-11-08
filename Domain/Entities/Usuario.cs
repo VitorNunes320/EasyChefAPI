@@ -19,6 +19,11 @@ namespace Domain.Entities
         [Column("foto")]
         public string? Foto { get; set; }
 
+        [Column("empresa_id")]
+        public Guid EmpresaId { get; set; }
+
+        public Empresa Empresa { get; set; }
+
         public ICollection<PerfilUsuario> PerfisUsuarios { get; set; }
     }
 }

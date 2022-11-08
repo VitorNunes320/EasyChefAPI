@@ -1,6 +1,7 @@
 ﻿using CrossCutting.Security;
 using CrossCutting.Utils;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.Exceptions;
 using Domain.Models.Autenticacao;
 using Repository.Interfaces;
@@ -25,7 +26,7 @@ namespace Service.Services
             _emailService = emailService;
         }
 
-        public void CriarUsuario(CriarUsuarioModel usuarioModel)
+        public void CriarUsuario(NovoUsuarioModel usuarioModel)
         {
             var usuarioExiste = _usuarioRepository.GetUsuarioByEmail(usuarioModel.Email);
             if (usuarioExiste != null)
@@ -33,6 +34,7 @@ namespace Service.Services
                 throw new EmailUtilizadoException();
             }
 
+            var usuarioAdmin = false;
             var usuario = new Usuario
             {
                 Nome = usuarioModel.Nome,
@@ -50,9 +52,30 @@ namespace Service.Services
                     throw new PerfilNaoExisteException();
                 }
 
+                if (perfilExiste.TipoPerfil == TipoPerfil.Administrador)
+                {
+                    usuarioAdmin = true;
+                }
+
                 var perfil = new PerfilUsuario(usuario.Id, perfilId, usuarioModel.Email);
                 usuario.PerfisUsuarios.Add(perfil);
             };
+
+            if (usuarioAdmin)
+            {
+                var empresa = new Empresa
+                {
+                    Nome = usuarioModel.Empresa.Nome,
+                    UsuarioCriou = usuario.Email,
+                };
+
+                usuario.EmpresaId = empresa.Id;
+                usuario.Empresa = empresa;
+            }
+            else
+            {
+                usuario.EmpresaId = usuarioModel.Empresa.Id;
+            }
 
             _usuarioRepository.Add(usuario);
         }
@@ -103,6 +126,11 @@ namespace Service.Services
             }
 
             return false;
+        }
+
+        public Guid? GetUsuarioEmpresaId(Guid usuarioId)
+        {
+            return _usuarioRepository.GetUsuarioEmpresaId(usuarioId);
         }
     }
 }

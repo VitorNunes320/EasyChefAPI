@@ -25,5 +25,10 @@ namespace Repository.Repositories
             return _usuarios.Where(usuario => usuario.Email.Equals(email) && usuario.Senha.Equals(senha))
                 .FirstOrDefault();
         }
+
+        public Guid? GetUsuarioEmpresaId(Guid usuarioId)
+        {
+            return _usuarios.Where(usuario => usuario.Id == usuarioId).Select(usurio => usurio.EmpresaId).FirstOrDefault();
+        }
     }
 }

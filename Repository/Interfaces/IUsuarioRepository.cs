@@ -7,5 +7,7 @@ namespace Repository.Interfaces
         public Usuario? GetUsuarioByEmail(string email);
 
         public Usuario? GetUsuarioByEmailSenha(string email, string senha);
+        
+        public Guid? GetUsuarioEmpresaId(Guid usuarioId);
     }
 }
