@@ -13,6 +13,7 @@ namespace Domain.Entities
         public List<Usuario> Usuarios { get; set; }
 
         [Column("habilitado")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public bool Habilitado { get; set; }
     }
 }

@@ -82,5 +82,26 @@ namespace EasyChefAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroBuscarMesas, e.Message));
             }
         }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult CreateMesa([FromBody] MesaModel model)
+        {
+            try
+            {
+                var usuarioId = User.GetUserId().GetValueOrDefault();
+                var empresaId = _usuarioService.GetUsuarioEmpresaId(usuarioId);
+                if (empresaId == null)
+                {
+                    return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.FalhaUsuarioAcessoEmpresa));
+                }
+                _mesaService.CreateMesa(model, (Guid)empresaId, User.Identity.Name);
+                return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoCriarMesa));
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroCriarMesa, e.Message));
+            }
+        }
     }
 }

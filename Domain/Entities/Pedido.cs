@@ -3,12 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
-    [Table("pedido")]
+    [Table("pedidos")]
     public class Pedido : EntidadeBase
     {
         public Pedido() : base() { }
 
         [Column("codigo")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Codigo { get; set; }
 
         [Column("valor_total")]
@@ -37,12 +38,12 @@ namespace Domain.Entities
         public TipoPedido TipoPedido { get; set; }
 
         [Column("mesa_id")]
-        public Guid MesaId { get; set; }
+        public Guid? MesaId { get; set; }
 
         public Mesa Mesa { get; set; }
 
         [Column("pedido_entrega_id")]
-        public Guid PedidoEntregaId { get; set; }
+        public Guid? PedidoEntregaId { get; set; }
 
         public PedidoEntrega PedidoEntrega { get; set; }
 

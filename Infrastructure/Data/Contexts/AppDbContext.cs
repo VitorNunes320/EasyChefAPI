@@ -21,7 +21,10 @@ namespace Data.Contexts
         public DbSet<Receita> Receitas { get; set; }
         public DbSet<ReceitaIngrediente> ReceitasIngredientes { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

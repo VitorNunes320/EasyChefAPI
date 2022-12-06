@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ErroAtualizarMesa" xml:space="preserve">
+    <value>Não foi possível atualizar a mesa!</value>
+  </data>
+  <data name="ErroAtualizarPedido" xml:space="preserve">
+    <value>Não foi possível atualizar o pedido!</value>
+  </data>
   <data name="ErroBuscarIngredientes" xml:space="preserve">
     <value>Não foi possível buscar os ingredientes!</value>
   </data>
   <data name="ErroBuscarMesas" xml:space="preserve">
     <value>Não foi possível buscar as mesas!</value>
+  </data>
+  <data name="ErroBuscarPedido" xml:space="preserve">
+    <value>Não foi possível buscar os pedidos!</value>
   </data>
   <data name="ErroBuscarPerfis" xml:space="preserve">
     <value>Não foi possível buscar os perfis!</value>
@@ -134,6 +143,12 @@
   </data>
   <data name="ErroCriarIngrediente" xml:space="preserve">
     <value>Não foi possível criar o ingrediente!</value>
+  </data>
+  <data name="ErroCriarMesa" xml:space="preserve">
+    <value>Não foi possível criar a mesa!</value>
+  </data>
+  <data name="ErroCriarPedido" xml:space="preserve">
+    <value>Não foi possível criar o pedido!</value>
   </data>
   <data name="ErroCriarReceita" xml:space="preserve">
     <value>Não foi possível criar a receita!</value>
@@ -183,6 +198,9 @@
   <data name="FalhaNenhumMesaEncontrado" xml:space="preserve">
     <value>Nenhuma mesa foi encontrada!</value>
   </data>
+  <data name="FalhaNenhumPedidoEncontrado" xml:space="preserve">
+    <value>Nenhum pedido foi encontrado!</value>
+  </data>
   <data name="FalhaNenhumUnidadeMedidaEncontrada" xml:space="preserve">
     <value>Nenhuma unidade de medida foi encontrada!</value>
   </data>
@@ -201,8 +219,20 @@
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="SucessoAtualizarMesa" xml:space="preserve">
+    <value>Mesa atualizada com sucesso!</value>
+  </data>
+  <data name="SucessoAtualizarPedido" xml:space="preserve">
+    <value>Pedido atualizado com sucesso!</value>
+  </data>
   <data name="SucessoCriarIngrediente" xml:space="preserve">
     <value>Ingrediente criado com sucesso!</value>
+  </data>
+  <data name="SucessoCriarMesa" xml:space="preserve">
+    <value>Mesa criada com sucesso!</value>
+  </data>
+  <data name="SucessoCriarPedido" xml:space="preserve">
+    <value>Pedido criado com sucesso!</value>
   </data>
   <data name="SucessoCriarReceita" xml:space="preserve">
     <value>Receita criada com sucesso!</value>

@@ -13,17 +13,26 @@ namespace Service.Services
     public class PedidoService : IPedidoService
     {
         private readonly IPedidoRepository _pedidoRespository;
+        private readonly IReceitaRepository _receitaRepository;
         private readonly IUsuarioRepository _usuarioRepository;
 
-        public PedidoService(IPedidoRepository pedidoRespository, IUsuarioRepository usuarioRepository)
+        public PedidoService(
+            IPedidoRepository pedidoRespository,
+            IUsuarioRepository usuarioRepository,
+            IReceitaRepository receitaRepository)
         {
             _pedidoRespository = pedidoRespository;
             _usuarioRepository = usuarioRepository;
+            _receitaRepository = receitaRepository;
         }
 
-        public List<PedidoModel> GetPedidos(string busca = "", int pagina = 1, int quantidade = 15)
+        public Paginacao<List<PedidoModel>> GetPedidos(Guid empresaId, string busca = "", int pagina = 1, int quantidade = 15)
         {
-            return null;
+            return new Paginacao<List<PedidoModel>>
+            {
+                Dados = _pedidoRespository.GetPedidos(empresaId, busca, pagina, quantidade),
+                Quantidade = _pedidoRespository.GetQuantidadePedidos(empresaId, busca)
+            };
         }
 
         public bool CreatePedido(PedidoModel model)
@@ -31,7 +40,6 @@ namespace Service.Services
             var vendedor = _usuarioRepository.GetById(model.VendedorId);
             var pedido = new Pedido
             {
-                ValorTotal = 0,
                 Observacoes = model.Observacoes,
                 Status = StatusPedido.NaoIniciado,
                 VendedorId = model.VendedorId,
@@ -43,15 +51,25 @@ namespace Service.Services
 
             foreach (var produto in model.Produtos)
             {
+                var receita = _receitaRepository.GetById(produto.Id);
+                if (receita == null)
+                {
+                    return false;
+                }
+
                 var produtoPedido = new ProdutoPedido
                 {
                     ReceitaId = produto.Id,
                     Quantidade = produto.Quantidade,
                     NomeCliente = produto.NomeCliente,
+                    Valor = receita.Valor
                 };
-
+                pedido.ProdutosPedidos.Add(produtoPedido);
+                pedido.ValorTotal += (receita.Valor * produto.Quantidade);
             }
 
+            pedido.QuantidadeItens = pedido.ProdutosPedidos.Count;
+            _pedidoRespository.Add(pedido);
             return true;
         }
     }

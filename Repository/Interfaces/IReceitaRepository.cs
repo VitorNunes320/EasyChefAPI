@@ -10,6 +10,6 @@ namespace Repository.Interfaces
 
         public List<ReceitaModel> GetReceitas(Guid empresaId, string busca = "", int pagina = 1, int quantidade = 15);
 
-        public int GetQuantidadeReceitas(Guid empresaId, string busca);
+        public int GetQuantidadeReceitas(Guid empresaId, string busca = "");
     }
 }

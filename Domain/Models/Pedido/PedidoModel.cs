@@ -12,7 +12,7 @@ namespace Domain.Models.Pedido
         /// <summary>
         /// Código do pedido
         /// </summary>
-        public string Codigo { get; set; }
+        public string? Codigo { get; set; }
 
         /// <summary>
         /// Data do pedido
@@ -32,7 +32,7 @@ namespace Domain.Models.Pedido
         /// <summary>
         /// Observações do pedido
         /// </summary>
-        public string Observacoes { get; set; }
+        public string? Observacoes { get; set; }
 
         /// <summary>
         /// Produtos do pedido
@@ -42,12 +42,12 @@ namespace Domain.Models.Pedido
         /// <summary>
         /// Nome do usuário que fez o pedido
         /// </summary>
-        public string UsuarioNome { get; set; }
+        public string? UsuarioNome { get; set; }
 
         /// <summary>
         /// Nome do vendedor
         /// </summary>
-        public string VendedorNome { get; set; }
+        public string? VendedorNome { get; set; }
 
         /// <summary>
         /// Id do vendedor
@@ -67,6 +67,6 @@ namespace Domain.Models.Pedido
         /// <summary>
         /// Id da mesa
         /// </summary>
-        public Guid MesaId { get; set; }
+        public Guid? MesaId { get; set; }
     }
 }

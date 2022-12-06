@@ -26,6 +26,7 @@ namespace Domain.Entities
         public string Token { get; set; }
 
         [Column("habilitado")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public bool Habilitado { get; set; }
 
         [Column("criado_em")]

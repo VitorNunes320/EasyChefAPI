@@ -61,6 +61,24 @@ namespace CrossCutting.Utils {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível atualizar a mesa!.
+        /// </summary>
+        public static string ErroAtualizarMesa {
+            get {
+                return ResourceManager.GetString("ErroAtualizarMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível atualizar o pedido!.
+        /// </summary>
+        public static string ErroAtualizarPedido {
+            get {
+                return ResourceManager.GetString("ErroAtualizarPedido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar os ingredientes!.
         /// </summary>
         public static string ErroBuscarIngredientes {
@@ -75,6 +93,15 @@ namespace CrossCutting.Utils {
         public static string ErroBuscarMesas {
             get {
                 return ResourceManager.GetString("ErroBuscarMesas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível buscar os pedidos!.
+        /// </summary>
+        public static string ErroBuscarPedido {
+            get {
+                return ResourceManager.GetString("ErroBuscarPedido", resourceCulture);
             }
         }
         
@@ -111,6 +138,24 @@ namespace CrossCutting.Utils {
         public static string ErroCriarIngrediente {
             get {
                 return ResourceManager.GetString("ErroCriarIngrediente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível criar a mesa!.
+        /// </summary>
+        public static string ErroCriarMesa {
+            get {
+                return ResourceManager.GetString("ErroCriarMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Não foi possível criar o pedido!.
+        /// </summary>
+        public static string ErroCriarPedido {
+            get {
+                return ResourceManager.GetString("ErroCriarPedido", resourceCulture);
             }
         }
         
@@ -259,6 +304,15 @@ namespace CrossCutting.Utils {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhum pedido foi encontrado!.
+        /// </summary>
+        public static string FalhaNenhumPedidoEncontrado {
+            get {
+                return ResourceManager.GetString("FalhaNenhumPedidoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhuma unidade de medida foi encontrada!.
         /// </summary>
         public static string FalhaNenhumUnidadeMedidaEncontrada {
@@ -313,11 +367,47 @@ namespace CrossCutting.Utils {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Mesa atualizada com sucesso!.
+        /// </summary>
+        public static string SucessoAtualizarMesa {
+            get {
+                return ResourceManager.GetString("SucessoAtualizarMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pedido atualizado com sucesso!.
+        /// </summary>
+        public static string SucessoAtualizarPedido {
+            get {
+                return ResourceManager.GetString("SucessoAtualizarPedido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Ingrediente criado com sucesso!.
         /// </summary>
         public static string SucessoCriarIngrediente {
             get {
                 return ResourceManager.GetString("SucessoCriarIngrediente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Mesa criada com sucesso!.
+        /// </summary>
+        public static string SucessoCriarMesa {
+            get {
+                return ResourceManager.GetString("SucessoCriarMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pedido criado com sucesso!.
+        /// </summary>
+        public static string SucessoCriarPedido {
+            get {
+                return ResourceManager.GetString("SucessoCriarPedido", resourceCulture);
             }
         }
         

@@ -11,10 +11,15 @@ namespace Domain.Entities
         public string Nome { get; set; }
 
         [Column("codigo")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Codigo { get; set; }
 
         [Column("habilitado")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public bool Habilitado { get; set; }
+
+        [Column("lugares")]
+        public int Lugares { get; set; }
 
         [Column("ocupada")]
         public bool Ocupada { get; set; }

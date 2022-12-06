@@ -3,12 +3,14 @@
     public class MesaModel
     {
 
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
 
         public string Nome { get; set; }
 
-        public string Codigo { get; set; }
+        public int Lugares { get; set; }
 
-        public bool Ocupada { get; set; }
+        public string? Codigo { get; set; }
+
+        public bool? Ocupada { get; set; }
     }
 }

@@ -1,10 +1,14 @@
 ﻿using CrossCutting.Utils;
 using Domain.Enums;
+using Domain.Models;
 using Domain.Models.Autenticacao;
 using Domain.Models.Pedido;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service.Extensions;
 using Service.Interfaces;
+using Service.Services;
 
 namespace EasyChefAPI.Controllers
 {
@@ -13,29 +17,33 @@ namespace EasyChefAPI.Controllers
     public class PedidoController : ControllerBase
     {
         private readonly IPedidoService _pedidoService;
+        private readonly IUsuarioService _usuarioService;
 
-        public PedidoController(IPedidoService pedidoService)
+        public PedidoController(IPedidoService pedidoService, IUsuarioService usuarioService)
         {
             _pedidoService = pedidoService;
+            _usuarioService = usuarioService;
         }
 
-        [HttpGet]
-        public ActionResult GetPedidos(string busca, int pagina, int quantidade)
+        [HttpGet("Lista")]
+        [Authorize]
+        public ActionResult GetPedidos(string? busca, int pagina = 1, int quantidade = 15)
         {
-            try
+            var usuarioId = User.GetUserId().GetValueOrDefault();
+            var empresaId = _usuarioService.GetUsuarioEmpresaId(usuarioId);
+            if (empresaId == null)
             {
-                var response = _pedidoService.GetPedidos(busca, pagina, quantidade);
-                if (response.Count <= 0)
-                {
-                    return NotFound(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.SucessoLogin));
-                }
+                return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.FalhaUsuarioAcessoEmpresa));
+            }
 
-                return Ok(new ResponseBase<List<PedidoModel>>(ResponseStatus.Sucesso, Mensagens.SucessoLogin, response));
-            }
-            catch (Exception e)
+            var response = _pedidoService.GetPedidos((Guid)empresaId, busca, pagina, quantidade);
+            if (response.Quantidade <= 0)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroLogin, e.Message));
+                return NotFound(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.FalhaNenhumPedidoEncontrado));
             }
+
+            return Ok(new ResponseBase<Paginacao<List<PedidoModel>>>(ResponseStatus.Sucesso, Mensagens.Ok, response));
+
         }
 
         [HttpPost]
@@ -44,16 +52,16 @@ namespace EasyChefAPI.Controllers
             try
             {
                 var response = _pedidoService.CreatePedido(model);
-                if (response)
+                if (!response)
                 {
-                    return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.SucessoLogin));
+                    return BadRequest(new ResponseBase<object>(ResponseStatus.Falha, Mensagens.ErroCriarPedido));
                 }
 
-                return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoLogin));
+                return Ok(new ResponseBase<object>(ResponseStatus.Sucesso, Mensagens.SucessoCriarPedido));
             }
             catch (Exception e)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroLogin, e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ResponseBase<string>(ResponseStatus.Erro, Mensagens.ErroCriarPedido, e.Message));
             }
         }
 

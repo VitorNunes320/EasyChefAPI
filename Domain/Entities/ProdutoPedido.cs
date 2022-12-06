@@ -10,6 +10,8 @@ namespace Domain.Entities
         [Column("receita_id")]
         public Guid ReceitaId { get; set; }
 
+        public Receita Receita { get; set; }
+
         [Column("quantidade")]
         public decimal Quantidade { get; set; }
 
